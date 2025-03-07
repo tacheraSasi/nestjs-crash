@@ -6,9 +6,9 @@ export class AppService {
     return 'Hello World!';
   }
   
-  sendHello(): boolean { 
-    const mailer = new EkiliRelay()
+  // sendHello(): boolean { 
+  //   const mailer = new EkiliRelay()
     
-    return false
-  }
+  //   return false
+  // }
 }

@@ -1,8 +1,9 @@
 import { Get, Module, Param } from '@nestjs/common';
 import { ChicksService } from './chicks.service';
+import { ChicksController } from './chicks.controller';
 
 @Module({
-  controllers: [ChicksModule],
+  controllers: [ChicksController],
   providers: [ChicksService],
   exports: [],
 })
