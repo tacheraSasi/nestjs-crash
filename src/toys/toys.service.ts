@@ -1,13 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Delete, Get, Injectable, Param, Post } from '@nestjs/common';
+import { Toy } from './toys.controller';
 
-export interface Toy {
-  id: number;
-  name: string;
-  color: string;
-}
-
-@Controller('toys')
-export class ToysController {
+@Injectable()
+export class ToysService {
   private toys = [
     { id: 1, name: 'Teddy Bear', color: 'brown' },
     { id: 2, name: 'Doll', color: 'pink' },
