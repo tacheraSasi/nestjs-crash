@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 
 interface Toy {
   id: number;
@@ -26,4 +26,10 @@ export class ToysController {
     this.toys.push(newToy);
     return newToy;
   }
+  
+  @Delete(':id')
+   deleteToy(@Param('id') id: string) {
+     this.toys = this.toys.filter(toy => toy.id !== Number(id));
+     return { message: 'Toy deleted!' };
+   }
 }
