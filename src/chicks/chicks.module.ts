@@ -9,7 +9,7 @@ import { ChicksController } from './chicks.controller';
 })
 export class ChicksModule {
   @Get(':id')
-  findOne(@Param("id") id:string): string {
+  findOne(@Param('id') id: string): string {
     return `This action returns a cat with id: ${id}`;
   }
 }
