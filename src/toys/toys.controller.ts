@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { ToysService } from './toys.service';
 
 export interface Toy {
   id: number;
@@ -8,28 +9,21 @@ export interface Toy {
 
 @Controller('toys')
 export class ToysController {
-  private toys = [
-    { id: 1, name: 'Teddy Bear', color: 'brown' },
-    { id: 2, name: 'Doll', color: 'pink' },
-    { id: 3, name: 'Car', color: 'red' },
-  ];
+  constructor (private readonly toysService: ToysService) {}
 
   @Get()
   getToys() {
-    return this.toys;
+    return this.toysService.getToys();
   }
 
   @Post()
   addToy(@Body() toy: Toy) {
-    const newId = this.toys.length + 1;
-    const newToy = { ...toy, id: newId };
-    this.toys.push(newToy);
-    return newToy;
+    return this.toysService.addToy(toy);
   }
 
   @Delete(':id')
-  deleteToy(@Param('id') id: string) {
-    this.toys = this.toys.filter((toy) => toy.id !== Number(id));
-    return { message: 'Toy deleted!' };
-  }
+    deleteToy(@Param('id') id: string) {
+      return this.toysService.deleteToy(Number(id));
+    }
+
 }
