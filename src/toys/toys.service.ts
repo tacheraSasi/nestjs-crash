@@ -14,6 +14,12 @@ export class ToysService {
     return this.toys;
   }
 
+  @Get()
+  getToy(@Param('id') id: string) {
+    const toy = this.toys.find((toy) => toy.id == Number(id));
+    return toy;
+  }
+
   @Post()
   addToy(@Body() toy: Toy) {
     const newId = this.toys.length + 1;
