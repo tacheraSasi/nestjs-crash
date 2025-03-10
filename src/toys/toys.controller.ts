@@ -9,7 +9,7 @@ export interface Toy {
 
 @Controller('toys')
 export class ToysController {
-  constructor (private readonly toysService: ToysService) {}
+  constructor(private readonly toysService: ToysService) {}
 
   @Get()
   getToys() {
@@ -22,8 +22,7 @@ export class ToysController {
   }
 
   @Delete(':id')
-    deleteToy(@Param('id') id: string) {
-      return this.toysService.deleteToy(Number(id));
-    }
-
+  deleteToy(@Param('id') id: string) {
+    return this.toysService.deleteToy(id);
+  }
 }
